@@ -1,46 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="X_and_Os.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="X_and_Os.MainPage">
 
     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-        <Label x:Name="turnLabel" Text="X's Turn" FontSize="Header" HorizontalTextAlignment="Center"/>
+        <Label x:Name="turnLabel" Text="X's Turn" FontSize="Header" HorizontalTextAlignment="Center" />
 
-        <Grid x:Name="board" WidthRequest="400" HeightRequest="400" RowSpacing="8" ColumnSpacing="8" >
+        <Grid x:Name="board" WidthRequest="400" HeightRequest="400" RowSpacing="8" ColumnSpacing="8">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Image Source="board.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+            <Image Source="board.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" />
 
-            <Button x:Name="cell0" FontSize="100" Clicked="ClickedCell" Grid.Column="0" Grid.Row="0" BackgroundColor="Transparent"/>
-            <Image x:Name="img0" InputTransparent="True" Grid.Column="0" Grid.Row="0"/>
-            <Button x:Name="cell1" FontSize="100" Clicked="ClickedCell" Grid.Column="0" Grid.Row="1" BackgroundColor="Transparent"/>
-            <Image x:Name="img1" InputTransparent="True" Grid.Column="0" Grid.Row="1"/>
-            <Button x:Name="cell2" FontSize="100" Clicked="ClickedCell" Grid.Column="0" Grid.Row="2" BackgroundColor="Transparent"/>
-            <Image x:Name="img2" InputTransparent="True" Grid.Column="0" Grid.Row="2"/>
+            <ImageButton x:Name="cell0" Clicked="Cell_Clicked" Grid.Column="0" Grid.Row="0" />
+            <ImageButton x:Name="cell1" Clicked="Cell_Clicked" Grid.Column="0" Grid.Row="1" />
+            <ImageButton x:Name="cell2" Clicked="Cell_Clicked" Grid.Column="0" Grid.Row="2" />
 
-            <Button x:Name="cell3" FontSize="100" Clicked="ClickedCell" Grid.Column="1" Grid.Row="0" BackgroundColor="Transparent"/>
-            <Image x:Name="img3" InputTransparent="True" Grid.Column="1" Grid.Row="0"/>
-            <Button x:Name="cell4" FontSize="100" Clicked="ClickedCell" Grid.Column="1" Grid.Row="1" BackgroundColor="Transparent"/>
-            <Image x:Name="img4" InputTransparent="True" Grid.Column="1" Grid.Row="1"/>
-            <Button x:Name="cell5" FontSize="100" Clicked="ClickedCell" Grid.Column="1" Grid.Row="2" BackgroundColor="Transparent"/>
-            <Image x:Name="img5" InputTransparent="True" Grid.Column="1" Grid.Row="2"/>
+            <ImageButton x:Name="cell3" Clicked="Cell_Clicked" Grid.Column="1" Grid.Row="0" />
+            <ImageButton x:Name="cell4" Clicked="Cell_Clicked" Grid.Column="1" Grid.Row="1" />
+            <ImageButton x:Name="cell5" Clicked="Cell_Clicked" Grid.Column="1" Grid.Row="2" />
 
-            <Button x:Name="cell6" FontSize="100" Clicked="ClickedCell" Grid.Column="2" Grid.Row="0" BackgroundColor="Transparent"/>
-            <Image x:Name="img6" InputTransparent="True" Grid.Column="2" Grid.Row="0"/>
-            <Button x:Name="cell7" FontSize="100" Clicked="ClickedCell" Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent"/>
-            <Image x:Name="img7" InputTransparent="True" Grid.Column="2" Grid.Row="1"/>
-            <Button x:Name="cell8" FontSize="100" Clicked="ClickedCell" Grid.Column="2" Grid.Row="2" BackgroundColor="Transparent"/>
-            <Image x:Name="img8" InputTransparent="True" Grid.Column="2" Grid.Row="2"/>
+            <ImageButton x:Name="cell6" Clicked="Cell_Clicked" Grid.Column="2" Grid.Row="0" />
+            <ImageButton x:Name="cell7" Clicked="Cell_Clicked" Grid.Column="2" Grid.Row="1" />
+            <ImageButton x:Name="cell8" Clicked="Cell_Clicked" Grid.Column="2" Grid.Row="2" />
 
         </Grid>
 

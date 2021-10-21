@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 using Xamarin.Forms;
 
@@ -7,48 +6,61 @@ namespace X_and_Os
 {
     public partial class MainPage : ContentPage
     {
+        string[] imagePaths = { "empty.png", "o.png", "x.png" };
+
         const int NumberOfCells = 9;
-        const int WidthOfGrid = 3;
+        const int WidthOfBoard = 3;
 
-        char playersTurn = 'X';
+        char playersTurn = 'x';
 
+        // 0 = empty
+        // 1 = o
+        // 2 = x
         int[] boardValues = new int[NumberOfCells];
+        ImageButton[] buttons = new ImageButton[NumberOfCells];
 
         public MainPage()
         {
             InitializeComponent();
+
+            for (int i = 0; i < NumberOfCells; i++)
+            {
+                buttons[i] = (ImageButton)board.FindByName("cell" + i);
+            }
+
             ResetGame();
         }
 
-        private void ClickedCell(object sender, EventArgs e)
+        private async void Cell_Clicked(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            ImageButton button = (ImageButton)sender;
 
             int y = (int)button.GetValue(Grid.ColumnProperty);
             int x = (int)button.GetValue(Grid.RowProperty);
 
-            int index = (y * WidthOfGrid) + x;
+            int index = (y * WidthOfBoard) + x;
+
 
             if (boardValues[index] == 0)
             {
-                Image visual = board.FindByName<Image>("img" + index);
-                visual.Source = char.ToLower(playersTurn) + ".png";
+                button.TranslationY = -200;
+                buttons[index].Source = playersTurn + ".png";
 
-                if (playersTurn == 'O')
+                if (playersTurn == 'o')
                 {
                     boardValues[index] = 1;
                     CheckForWinner();
-                    playersTurn = 'X';
+                    playersTurn = 'x';
                 }
                 else
                 {
                     boardValues[index] = 2;
                     CheckForWinner();
-                    playersTurn = 'O';
+                    playersTurn = 'o';
                 }
 
                 turnLabel.Text = playersTurn + "'s Turn";
-
+                await button.TranslateTo(0, 0, 250);
             }
 
         }
@@ -58,9 +70,9 @@ namespace X_and_Os
             // --> Check rows 012
             // ooo            345
             // -->            678
-            for (int i = 0; i < WidthOfGrid; i++)
+            for (int i = 0; i < WidthOfBoard; i++)
             {
-                int index = i * WidthOfGrid;
+                int index = i * WidthOfBoard;
 
                 if (boardValues[index] == boardValues[index + 1] && boardValues[index + 1] == boardValues[index + 2] && boardValues[index] != 0)
                 {
@@ -73,7 +85,7 @@ namespace X_and_Os
             // |x| Check cols 012
             // |x|            345
             // VxV            678
-            for (int i = 0; i < WidthOfGrid; i++)
+            for (int i = 0; i < WidthOfBoard; i++)
             {
                 int index = i;
 
@@ -140,12 +152,12 @@ namespace X_and_Os
         {
             for (int i = 0; i < NumberOfCells; i++)
             {
-                var img = board.FindByName<Image>("img" + i);
-                img.Source = null;
                 boardValues[i] = 0;
+                int index = boardValues[i];
+                buttons[i].Source = imagePaths[index];
             }
 
-            playersTurn = 'X';
+            playersTurn = 'x';
         }
     }
 }

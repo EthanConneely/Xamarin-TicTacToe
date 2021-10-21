@@ -155,6 +155,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="board.png" />
+    <Content Include="empty.png" />
     <Content Include="o.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="x.png" />
